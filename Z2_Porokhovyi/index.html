@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Obedové menu v okolí FEI</title>
+    <link rel="icon" type="image/png" href="img/favicon.png">
+    <meta property="og:title" content="Obedové menu v okolí FEI">
+    <meta property="og:description" content="Denné a týždenné menu reštaurácií Eat&Meet, Naše Hospoda a FiitFood na jednom mieste.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="sk_SK">
+    
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+        crossorigin="anonymous"
+    >
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" defer></script>
+    <script src="js/script.js" defer></script>
+
+</head>
+<body>
+    <header class="site-header">
+        <div class="container py-3">
+            <a class="site-brand" href="#menu-section">
+                <img src="img/favicon.png" alt="" width="28" height="28">
+                <span>Obedové menu</span>
+            </a>
+
+            <nav aria-label="Hlavná navigácia">
+                <ul class="nav gap-3">
+                    <li class="nav-item">
+                        <a class="nav-link p-0" href="#menu-section">Jedálny lístok</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link p-0" href="#about-project">O projekte</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="site-hero">
+        <div class="container py-4">
+            <h1 class="h2 fw-bold mb-1">Obedové menu v okolí FEI</h1>
+            <p class="mb-0">Denné menu troch reštaurácií v okolí fakulty.</p>
+        </div>
+    </div>
+
+
+    <main class="container pb-4">
+        <section id="menu-section" aria-labelledby="menu-heading">
+            <h2 id="menu-heading" class="h4 mb-3 mt-4">Jedálny lístok</h2>
+
+            <div class="bg-white border rounded-4 p-4 mb-4">
+                <fieldset id="restaurant-filters" class="mb-3">
+                    <legend class="fs-6 fw-semibold">
+                        Zobraziť reštaurácie
+                    </legend>
+
+                    <label class="form-check form-check-inline">
+                        <input class="form-check-input"
+                               type="checkbox" value="j1" checked>
+                        <span class="form-check-label">Eat&Meet</span>
+                    </label>
+
+                    <label class="form-check form-check-inline">
+                        <input class="form-check-input"
+                               type="checkbox" value="j2" checked>
+                        <span class="form-check-label">Naše Hospoda</span>
+                    </label>
+
+                    <label class="form-check form-check-inline">
+                        <input class="form-check-input"
+                               type="checkbox" value="j3" checked>
+                        <span class="form-check-label">FiitFood</span>
+                    </label>
+                </fieldset>
+
+                <div class="row g-3 align-items-end">
+                    <div class="col-12 col-md-4">
+                        <label for="day-select" class="form-label">
+                            Deň:
+                        </label>
+
+                        <select id="day-select" class="form-select">
+                            <option value="1">Pondelok</option>
+                            <option value="2">Utorok</option>
+                            <option value="3">Streda</option>
+                            <option value="4">Štvrtok</option>
+                            <option value="5">Piatok</option>
+                            <option value="all">Celý týždeň</option>
+                        </select>
+                    </div>
+
+                    <div class="col-12 col-md-auto">
+                        <button id="refresh" type="button"
+                                class="btn btn-primary w-100">
+                            Aktualizovať menu
+                        </button>
+                    </div>
+
+                    <div class="col-12 col-md-auto">
+                        <button id="clear-cache" type="button"
+                                class="btn btn-outline-secondary w-100">
+                            Vymazať cache
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="menus"></div>
+            <details class="bg-white border rounded-4 p-4 mt-4">
+                <summary class="fw-semibold">Zoznam alergénov</summary>
+
+                <ol class="small mt-3 mb-3">
+                    <li>Obilniny obsahujúce lepok</li>
+                    <li>Kôrovce</li>
+                    <li>Vajcia</li>
+                    <li>Ryby</li>
+                    <li>Arašidy</li>
+                    <li>Sójové bôby</li>
+                    <li>Mlieko vrátane laktózy</li>
+                    <li>Orechy</li>
+                    <li>Zeler</li>
+                    <li>Horčica</li>
+                    <li>Sezamové semená</li>
+                    <li>Oxid siričitý a siričitany</li>
+                    <li>Vlčí bôb</li>
+                    <li>Mäkkýše</li>
+                </ol>
+
+                <p class="small text-secondary mb-0">
+                    Zoznam uvádza skrátené názvy skupín alergénov.
+                    Údaje pri jedlách pochádzajú zo zdrojových jedálnych lístkov.
+                    Ak alergény nie sú uvedené, neznamená to, že ich jedlo neobsahuje.
+                    Presné informácie si overte v reštaurácii.
+                </p>
+            </details>
+        </section>
+
+        <section id="about-project"
+                 class="bg-white border rounded-4 p-4 mt-5"
+                 aria-labelledby="about-heading">
+
+            <h2 id="about-heading" class="h4 mb-3">O projekte</h2>
+
+            <p>
+                Aplikácia zobrazuje obedové menu troch reštaurácií.
+                Umožňuje vybrať deň, zobraziť celý týždeň
+                a skryť jednotlivé reštaurácie.
+            </p>
+
+            <h3 class="h6 fw-bold mt-4">Zdroje údajov</h3>
+
+            <ul>
+                <li>
+                    <a href="https://eatandmeet.sk/tyzdenne-menu">
+                        Eat &amp; Meet
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.nasehospoda-karloveska.sk/">
+                        Naše Hospoda
+                    </a>
+                </li>
+                <li>
+                    <a href="http://www.freefood.sk/menu/#fiit-food">
+                        FiitFood
+                    </a>
+                </li>
+            </ul>
+
+            <h3 class="h6 fw-bold mt-4">Spracovanie údajov</h3>
+
+            <p>
+                Údaje sa načítavajú z lokálnych HTML kópií stránok.
+                Pomocou DOMParser aplikácia vyberie názvy jedál,
+                ceny a dostupné údaje o alergénoch.
+                Každá reštaurácia má vlastnú funkciu na spracovanie menu.
+            </p>
+
+            <p>
+                Spracované menu sa ukladá do localStorage.
+                Cache sa používa počas rovnakého kalendárneho dňa.
+                Používateľ môže menu znovu načítať alebo cache vymazať.
+                Aktualizácia načíta lokálnu kópiu, nie živú stránku
+                reštaurácie.
+            </p>
+
+            <h3 class="h6 fw-bold mt-4">Použité knižnice</h3>
+
+            <ul>
+                <li>
+                    Bootstrap 5.3.8 – responzívne rozloženie,
+                    navigácia, tlačidlá, formulárové prvky
+                    a základný vzhľad kariet.
+                </li>
+                <li>
+                    jQuery 3.7.1 – obsluha udalostí, nastavenie viditeľnosti
+                    kariet, zmena stavových správ a blokovanie tlačidiel
+                    počas načítavania.
+                </li>
+            </ul>
+
+            <h3 class="h6 fw-bold mt-4">Vzhľad aplikácie</h3>
+
+            <p>
+                Vlastné CSS upravuje farby, hlavičku a rozloženie jedál.
+                Polievky sú odlíšené jemným zeleným pozadím.
+                Pri každom jedle sa zobrazuje kategória, názov,
+                dostupné alergény a cena.
+                Na menších obrazovkách sa rozloženie prispôsobuje šírke stránky.
+            </p>
+
+            <h3 class="h6 fw-bold mt-4">Písmo a licencia</h3>
+
+            <p>
+                Aplikácia používa písmo Outfit, ktoré sa načítava
+                z lokálnych súborov vo formáte WOFF2.
+                Písmo je dostupné pod licenciou SIL Open Font License 1.1.
+                Licenčný súbor OFL.txt je súčasťou priečinka font.
+            </p>
+
+            <h3 class="h6 fw-bold mt-4">Načítavanie a chyby</h3>
+
+            <p>
+                Menu jednotlivých reštaurácií sa načítava nezávisle.
+                Chyba jednej reštaurácie nebráni zobrazeniu ostatných.
+                Každá karta obsahuje vlastnú stavovú správu
+                a čas posledného úspešného načítania.
+                Pri neúspešnej aktualizácii sa obsah príslušnej karty vymaže.
+            </p>
+
+            <h3 class="h6 fw-bold mt-4">Použitie AI</h3>
+
+            <p class="mb-0">
+                Pri tvorbe aplikácie bol použitý ChatGPT na vysvetľovanie
+                JavaScriptu, návrhy úprav kódu a pomoc s HTML a CSS.
+                Kód bol postupne upravovaný a overovaný autorom projektu.
+            </p>
+
+        </section>
+    </main>
+    <footer class="bg-white border-top mt-5">
+        <div class="container py-4">
+            <p class="small text-secondary text-center mb-0">
+                © 2026 FEI STU · Nikita Porokhovyi
+            </p>
+        </div>
+    </footer>
+</body>
+</html>

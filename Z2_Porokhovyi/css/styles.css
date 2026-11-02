@@ -1,0 +1,211 @@
+@font-face {
+    font-family: "Outfit";
+    src: url("../font/Outfit-Regular.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Outfit";
+    src: url("../font/Outfit-Medium.woff2") format("woff2");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Outfit";
+    src: url("../font/Outfit-SemiBold.woff2") format("woff2");
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Outfit";
+    src: url("../font/Outfit-Bold.woff2") format("woff2");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+:root {
+    --font-main: "Outfit", system-ui, sans-serif;
+    --page-width: 1000px;
+    --font-size-secondary: 0.875rem;
+
+    --color-background: #f5f6f8;
+    --color-surface: #ffffff;
+    --color-text: #202124;
+    --color-muted: #626873;
+    --color-border: #e9ecef;
+    --color-accent: #2458c6;
+    --color-accent-hover: #1b459d;
+    --color-accent-rgb: 36, 88, 198;
+    --color-accent-hover-rgb: 27, 69, 157;
+    --color-soup: #edf6ee;
+    --color-banner-text: #ffffff;
+
+    --meal-category-width: 130px;
+    --meal-column-gap: 16px;
+    --meal-row-gap: 4px;
+    --meal-padding: 12px;
+    --meal-margin: 4px;
+    --meal-radius: 8px;
+
+    --header-gap: 12px;
+    --brand-gap: 8px;
+    --scroll-offset: 100px;
+    --status-padding-y: 4px;
+    --status-padding-x: 12px;
+    --status-radius: 999px;
+
+    --bs-body-font-family: var(--font-main);
+    --bs-body-bg: var(--color-background);
+    --bs-body-color: var(--color-text);
+    --bs-secondary-color: var(--color-muted);
+    --bs-border-color: var(--color-border);
+
+    --bs-link-color: var(--color-accent);
+    --bs-link-color-rgb: var(--color-accent-rgb);
+    --bs-link-hover-color: var(--color-accent-hover);
+    --bs-link-hover-color-rgb: var(--color-accent-hover-rgb);
+}
+
+
+.container {
+    max-width: var(--page-width);
+}
+
+section {
+    scroll-margin-top: var(--scroll-offset);
+}
+
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.site-header .container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--header-gap);
+}
+
+.site-brand {
+    display: flex;
+    align-items: center;
+    gap: var(--brand-gap);
+    color: var(--color-text);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.site-header .nav-link {
+    color: var(--color-muted);
+}
+
+.site-brand:hover,
+.site-header .nav-link:hover {
+    color: var(--color-accent);
+}
+
+
+.site-hero {
+    background: var(--color-accent);
+    color: var(--color-banner-text);
+}
+
+
+.btn-primary {
+    --bs-btn-bg: var(--color-accent);
+    --bs-btn-border-color: var(--color-accent);
+    --bs-btn-hover-bg: var(--color-accent-hover);
+    --bs-btn-hover-border-color: var(--color-accent-hover);
+    --bs-btn-active-bg: var(--color-accent-hover);
+    --bs-btn-active-border-color: var(--color-accent-hover);
+    --bs-btn-disabled-bg: var(--color-accent);
+    --bs-btn-disabled-border-color: var(--color-accent);
+    --bs-btn-focus-shadow-rgb: var(--color-accent-rgb);
+}
+
+.form-check-input:checked {
+    background-color: var(--color-accent);
+    border-color: var(--color-accent);
+}
+
+.restaurant-card {
+    overflow-wrap: anywhere;
+}
+
+.status-badge {
+    display: inline-block;
+    padding: var(--status-padding-y) var(--status-padding-x);
+    border-radius: var(--status-radius);
+    background: rgba(var(--color-accent-rgb), 0.1);
+    color: var(--color-accent);
+    font-size: var(--font-size-secondary);
+}
+
+.status-badge:empty {
+    display: none;
+}
+
+
+.meal {
+    display: grid;
+    grid-template-columns: var(--meal-category-width) minmax(0, 1fr) auto;
+    column-gap: var(--meal-column-gap);
+    row-gap: var(--meal-row-gap);
+
+    margin: var(--meal-margin);
+    padding: var(--meal-padding);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.meal:last-child {
+    border-bottom: 0;
+}
+
+.meal-category,
+.meal-allergens {
+    color: var(--color-muted);
+    font-size: var(--font-size-secondary);
+}
+
+.meal-name,
+.meal-allergens {
+    display: block;
+}
+
+.meal-name {
+    font-weight: 500;
+}
+
+.meal-price {
+    font-weight: 700;
+    text-align: right;
+    white-space: nowrap;
+}
+
+.meal-soup {
+    background: var(--color-soup);
+    border-radius: var(--meal-radius);
+}
+
+
+@media (max-width: 575px) {
+    .meal {
+        grid-template-columns: minmax(0, 1fr) auto;
+    }
+
+    .meal-category {
+        grid-column: span 2;
+    }
+}
